@@ -112,8 +112,9 @@ const ItemRow: React.FC<ItemRowProps> = ({ product, qty, mode, syncTerm, onUpdat
             )}
           </div>
 
-          {/* Breakdown IVU — solo modos no mensuales (Cash, HD, Kiwi) */}
-          {!isMonthly && (
+          {/* Breakdown IVU — Home Depot y Kiwi únicamente.
+              Cash NO muestra IVU (requerimiento de Anker — solo precio total). */}
+          {!isMonthly && mode !== 'cash' && (
             <div className="mt-1 flex flex-wrap gap-x-2 gap-y-0.5 text-[10px] text-slate-500 dark:text-slate-400 leading-snug">
               <span>Sin IVU: <b className="text-slate-700 dark:text-slate-200">{fmt(sinIvu)}</b></span>
               <span>IVU 11.5%: <b className="text-slate-700 dark:text-slate-200">{fmt(ivuVal)}</b></span>

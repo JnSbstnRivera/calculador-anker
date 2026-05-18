@@ -484,8 +484,9 @@ export default function CotizacionPDF(props: CotizacionPDFProps) {
                             </View>
                           </>
                         )}
-                        {/* IVU breakdown — Cash, Home Depot y Kiwi */}
-                        {!isMonthly && (
+                        {/* IVU breakdown — Home Depot y Kiwi únicamente.
+                            Cash NO muestra IVU (requerimiento de Anker — solo precio total). */}
+                        {!isMonthly && col.key !== 'cash' && (
                           <>
                             <View style={styles.totalBoxRow}>
                               <Text style={styles.totalBoxLabel}>{tr('Sin IVU', 'No tax')}</Text>
