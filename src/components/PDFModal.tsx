@@ -121,7 +121,7 @@ export function PDFModal({
   const [pdfModes, setPdfModes] = useState<PdfMode[]>([initialMode]);
   const [pdfSyncTerms, setPdfSyncTerms] = useState<SyncTerm[]>([initialSyncTerm]);
   const [promosOpen, setPromosOpen] = useState(true);
-  const [madresCardOpen, setMadresCardOpen] = useState(true);
+  const [madresCardOpen, setMadresCardOpen] = useState(false);
   const [farmaCardOpen, setFarmaCardOpen] = useState(true);
   const [error, setError] = useState('');
 
@@ -376,7 +376,8 @@ export function PDFModal({
               }}
             >
               <span style={{ fontSize: 13, fontWeight: 800, color: TEXT_PRIMARY, display: 'flex', alignItems: 'center', gap: 8 }}>
-                🎁 {idioma === 'en' ? 'Available promotions' : 'Promociones disponibles'}
+                <span aria-hidden>🎁</span>
+                <span>{idioma === 'en' ? 'Available promotions' : 'Promociones disponibles'}</span>
               </span>
               <span style={{ fontSize: 11, color: TEXT_MUTED, display: 'flex', alignItems: 'center', gap: 4 }}>
                 {promoMadres && madresApply && (
