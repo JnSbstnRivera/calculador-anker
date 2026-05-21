@@ -530,8 +530,8 @@ export default function CotizacionPDF(props: CotizacionPDFProps) {
               fontFamily: 'Helvetica-Bold', textAlign: 'center', marginBottom: 3,
             }}>
               {tr(
-                `⚕️ Promoción Farmacias — ${farmacias.nombre} ⚕️`,
-                `⚕️ Pharmacy Promo — ${farmacias.nombre} ⚕️`,
+                `+ Promoción Farmacias — ${farmacias.nombre} +`,
+                `+ Pharmacy Promo — ${farmacias.nombre} +`,
               )}
             </Text>
             <Text style={{
@@ -558,8 +558,8 @@ export default function CotizacionPDF(props: CotizacionPDFProps) {
               fontFamily: 'Helvetica-Bold', textAlign: 'center', marginBottom: 3,
             }}>
               {tr(
-                '♥ ♥ Promo Mes de las Madres 2026 — Anker ♥ ♥',
-                "♥ ♥ Mother's Day Promo 2026 — Anker ♥ ♥",
+                '+ + Promo Mes de las Madres 2026 — Anker + +',
+                "+ + Mother's Day Promo 2026 — Anker + +",
               )}
             </Text>
             <Text style={{
@@ -588,7 +588,7 @@ export default function CotizacionPDF(props: CotizacionPDFProps) {
         {/* FOOTER */}
         <View style={styles.footer}>
           <Text style={styles.footerText}>
-            787.395.7766  |  windmar.com  |  ventas@windmarhome.com  |  © Windmar Home 2025
+            787.395.7766  |  windmar.com  |  ventas@windmarhome.com  |  © Windmar Home {new Date().getFullYear()}
           </Text>
         </View>
       </Page>
