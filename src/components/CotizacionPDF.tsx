@@ -456,13 +456,6 @@ export default function CotizacionPDF(props: CotizacionPDFProps) {
                   {chunk.map(col => {
                     const grandTotal = getColGrandTotal(col);
                     const financed = col.isSyncMode ? Math.max(0, syncTotalBase - downPayment) : 0;
-                    // IVU PR = 11.5% — para modos no-mensuales (Cash, Home Depot, Kiwi),
-                    // se deriva sinIVU + IVU del total final. Math siempre cuadra:
-                    //   sinIVU + IVU = grandTotal
-                    const IVU_RATE = 0.115;
-                    const isMonthly = col.isSyncMode;
-                    const sinIvu = !isMonthly ? grandTotal / (1 + IVU_RATE) : 0;
-                    const ivuVal = !isMonthly ? grandTotal - sinIvu        : 0;
                     return (
                       <View key={col.key} style={styles.totalBox}>
                         <View style={[styles.totalBoxHeader, { backgroundColor: col.color }]}>
@@ -481,20 +474,6 @@ export default function CotizacionPDF(props: CotizacionPDFProps) {
                             <View style={styles.totalBoxRow}>
                               <Text style={styles.totalBoxLabel}>{tr('A financiar', 'To finance')}</Text>
                               <Text style={styles.totalBoxValue}>{fmt(financed)}</Text>
-                            </View>
-                          </>
-                        )}
-                        {/* IVU breakdown — Home Depot y Kiwi únicamente.
-                            Cash NO muestra IVU (requerimiento de Anker — solo precio total). */}
-                        {!isMonthly && col.key !== 'cash' && (
-                          <>
-                            <View style={styles.totalBoxRow}>
-                              <Text style={styles.totalBoxLabel}>{tr('Sin IVU', 'No tax')}</Text>
-                              <Text style={styles.totalBoxValue}>{fmt(sinIvu)}</Text>
-                            </View>
-                            <View style={[styles.totalBoxRow, { backgroundColor: ROW_EVEN }]}>
-                              <Text style={styles.totalBoxLabel}>{tr('IVU 11.5%', 'Tax 11.5%')}</Text>
-                              <Text style={styles.totalBoxValue}>{fmt(ivuVal)}</Text>
                             </View>
                           </>
                         )}
