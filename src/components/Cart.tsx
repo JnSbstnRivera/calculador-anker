@@ -64,16 +64,10 @@ interface ItemRowProps {
   onRemoveItem: (id: string) => void;
 }
 
-const IVU_RATE = 0.115;
-
 const ItemRow: React.FC<ItemRowProps> = ({ product, qty, mode, syncTerm, onUpdateQty, onRemoveItem }) => {
   const price = getItemPrice(product, mode, syncTerm);
   const isMonthly = mode === 'sync';
-
-  // IVU breakdown — solo para modos no mensuales
   const lineTotal = price * qty;
-  const sinIvu = !isMonthly ? lineTotal / (1 + IVU_RATE) : 0;
-  const ivuVal = !isMonthly ? lineTotal - sinIvu : 0;
 
   return (
     <div className="bg-white dark:bg-[#161b22] rounded-xl border border-windmar-blue-light/30 dark:border-white/10 p-3 shadow-sm">
@@ -111,15 +105,6 @@ const ItemRow: React.FC<ItemRowProps> = ({ product, qty, mode, syncTerm, onUpdat
               <> · Subt. <b>{fmt(lineTotal)}{isMonthly && '/mes'}</b></>
             )}
           </div>
-
-          {/* Breakdown IVU — Home Depot y Kiwi únicamente.
-              Cash NO muestra IVU (requerimiento de Anker — solo precio total). */}
-          {!isMonthly && mode !== 'cash' && (
-            <div className="mt-1 flex flex-wrap gap-x-2 gap-y-0.5 text-[10px] text-slate-500 dark:text-slate-400 leading-snug">
-              <span>Sin IVU: <b className="text-slate-700 dark:text-slate-200">{fmt(sinIvu)}</b></span>
-              <span>IVU 11.5%: <b className="text-slate-700 dark:text-slate-200">{fmt(ivuVal)}</b></span>
-            </div>
-          )}
 
           <div className="flex items-center gap-1.5 mt-2">
             <button
