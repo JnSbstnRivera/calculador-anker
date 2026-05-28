@@ -467,20 +467,26 @@ export default function CotizacionPDF(props: CotizacionPDFProps) {
                         <View style={[styles.totalBoxHeader, { backgroundColor: col.color }]}>
                           <Text style={styles.totalBoxHeaderText}>{col.label}</Text>
                         </View>
-                        {col.isSyncMode && downPayment > 0 && (
+                        {col.isSyncMode && (
                           <>
+                            {/* Precio total financiado del producto — siempre visible en sync */}
                             <View style={styles.totalBoxRow}>
-                              <Text style={styles.totalBoxLabel}>{tr('Precio Sync', 'Sync Price')}</Text>
+                              <Text style={styles.totalBoxLabel}>{tr('Valor total financiado', 'Total financed value')}</Text>
                               <Text style={styles.totalBoxValue}>{fmt(syncTotalBase)}</Text>
                             </View>
-                            <View style={[styles.totalBoxRow, { backgroundColor: ROW_EVEN }]}>
-                              <Text style={styles.totalBoxLabel}>{tr('Pronto Pago', 'Down Payment')}</Text>
-                              <Text style={styles.totalBoxValue}>{fmt(downPayment)}</Text>
-                            </View>
-                            <View style={styles.totalBoxRow}>
-                              <Text style={styles.totalBoxLabel}>{tr('A financiar', 'To finance')}</Text>
-                              <Text style={styles.totalBoxValue}>{fmt(financed)}</Text>
-                            </View>
+                            {/* Desglose con pronto pago — solo si aplica */}
+                            {downPayment > 0 && (
+                              <>
+                                <View style={[styles.totalBoxRow, { backgroundColor: ROW_EVEN }]}>
+                                  <Text style={styles.totalBoxLabel}>{tr('Pronto Pago', 'Down Payment')}</Text>
+                                  <Text style={styles.totalBoxValue}>{fmt(downPayment)}</Text>
+                                </View>
+                                <View style={styles.totalBoxRow}>
+                                  <Text style={styles.totalBoxLabel}>{tr('A financiar', 'To finance')}</Text>
+                                  <Text style={styles.totalBoxValue}>{fmt(financed)}</Text>
+                                </View>
+                              </>
+                            )}
                           </>
                         )}
                         <View style={[styles.totalBoxHighlight, { backgroundColor: col.color }]}>
