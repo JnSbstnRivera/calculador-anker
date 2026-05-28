@@ -19,7 +19,7 @@ export interface CotizacionPDFProps {
   pdfModes: PdfMode[];
   pdfSyncTerms: ('12' | '24' | '48')[];
   downPayment: number;
-  consultor: { nombre: string; correo: string; telefono: string; };
+  consultor: { nombre: string; correo: string; telefono: string; agenteTelefonico: string; };
   cliente: { nombre: string; correo: string; telefono: string; direccion: string; };
   idioma?: Idioma;
   promoMadres?: boolean;
@@ -318,6 +318,12 @@ export default function CotizacionPDF(props: CotizacionPDFProps) {
               <View style={styles.dataRow}>
                 <Text style={styles.dataLabel}>{tr('Teléfono:', 'Phone:')}</Text>
                 <Text style={styles.dataValue}>{consultor.telefono}</Text>
+              </View>
+            ) : null}
+            {consultor.agenteTelefonico ? (
+              <View style={styles.dataRow}>
+                <Text style={styles.dataLabel}>{tr('Agente Tel.:', 'Lead Owner:')}</Text>
+                <Text style={styles.dataValue}>{consultor.agenteTelefonico}</Text>
               </View>
             ) : null}
             <View style={{ marginTop: 6 }}>

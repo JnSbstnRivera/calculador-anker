@@ -22,6 +22,7 @@ export interface ConsultorForm {
   nombre: string;
   correo: string;
   telefono: string;
+  agenteTelefonico: string;   // Agente Telefónico (Lead Owner) — obligatorio
 }
 
 export interface FarmaciasPromo {
@@ -117,7 +118,7 @@ export function PDFModal({
 }: PDFModalProps) {
 
   const [cliente, setCliente] = useState<ClienteForm>({ nombre: '', correo: '', telefono: '', direccion: '' });
-  const [consultor, setConsultor] = useState<ConsultorForm>({ nombre: '', correo: '', telefono: '' });
+  const [consultor, setConsultor] = useState<ConsultorForm>({ nombre: '', correo: '', telefono: '', agenteTelefonico: '' });
   const [pdfModes, setPdfModes] = useState<PdfMode[]>([initialMode]);
   const [pdfSyncTerms, setPdfSyncTerms] = useState<SyncTerm[]>([initialSyncTerm]);
   const [promosOpen, setPromosOpen] = useState(true);
@@ -148,6 +149,12 @@ export function PDFModal({
       setError(idioma === 'en'
         ? 'Customer name and consultant name are required.'
         : 'Nombre del cliente y consultor son requeridos.');
+      return;
+    }
+    if (!consultor.agenteTelefonico.trim()) {
+      setError(idioma === 'en'
+        ? 'Lead Owner (call-center agent) is required.'
+        : 'Agente Telefónico (Lead Owner) es obligatorio.');
       return;
     }
     if (pdfModes.length === 0) {
@@ -285,6 +292,12 @@ export function PDFModal({
                 label={idioma === 'en' ? 'Phone' : 'Teléfono'}
                 value={consultor.telefono}
                 onChange={v => setConsultor({ ...consultor, telefono: v })}
+              />
+              <Field
+                label={idioma === 'en' ? 'Lead Owner (call-center agent) *' : 'Agente Telefónico (Lead Owner) *'}
+                value={consultor.agenteTelefonico}
+                onChange={v => setConsultor({ ...consultor, agenteTelefonico: v })}
+                colSpan={2}
               />
             </div>
           </section>
