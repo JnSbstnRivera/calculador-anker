@@ -398,7 +398,7 @@ export function PDFModal({
                     background: '#1D429B', color: 'white',
                     padding: '2px 8px', borderRadius: 10, fontWeight: 700,
                   }}>
-                    👔 {idioma === 'en' ? "Father's" : 'Padre'}
+                    🧔 {idioma === 'en' ? "Father's" : 'Padre'}
                   </span>
                 )}
                 {farmacias.activa && (
@@ -429,7 +429,7 @@ export function PDFModal({
                         padding: '10px 12px', background: 'transparent', border: 'none', cursor: 'pointer',
                         fontSize: 12.5, fontWeight: 800, color: '#AEC2EC',
                       }}>
-                      <span>👔 {idioma === 'en' ? "Father's Day 2026 — Anker" : 'Día del Padre 2026 — Anker'} 👔</span>
+                      <span>🧔 {idioma === 'en' ? "Father's Day 2026 — Anker" : 'Día del Padre 2026 — Anker'} 🧔</span>
                       <span>{madresCardOpen ? '▴' : '▾'}</span>
                     </button>
                     {madresCardOpen && (
