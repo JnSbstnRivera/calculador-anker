@@ -3,6 +3,7 @@ import { CheckCircle2, AlertCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PRODUCTS } from './constants';
 import { usePDFCotizacion } from './hooks/usePDFCotizacion';
+import { trackUsage } from './lib/trackUsage';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { ProductCard } from './components/ProductCard';
@@ -202,6 +203,21 @@ export default function App() {
         idioma: data.idioma,
         promoMadres: data.promoMadres,
         farmacias: data.farmacias,
+      });
+      trackUsage({
+        app: 'anker',
+        consultor: (data.consultor as any)?.nombre,
+        agente_telefonico: (data.consultor as any)?.agenteTelefonico,
+        cliente_nombre: (data.cliente as any)?.nombre,
+        correo_cliente: (data.cliente as any)?.correo ?? (data.cliente as any)?.email,
+        telefono_cliente: (data.cliente as any)?.telefono,
+        monto_cotizado: cartItems.reduce((s, i) => s + (i.cashPrice || 0) * (i.qty || 0), 0),
+        idioma: data.idioma,
+        detalle: {
+          items: cartItems.map(i => ({ id: i.id, qty: i.qty })),
+          promoPadre: data.promoMadres,
+          farmacia: (data.farmacias as any)?.activa,
+        },
       });
       setShowPDFModal(false);
       showToast('PDF descargado ✓');
