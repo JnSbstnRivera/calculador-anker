@@ -1,22 +1,20 @@
 /**
- * Promo Mes de las Madres 2026 — Anker
+ * Promo Día del Padre 2026 — Anker
  *
- * Según comunicado oficial (José Alicea, 04/30/2026):
- *   - Anker Solix F2600: $3,490 (20% off)  → ya reflejado en precio cash
- *   - Anker Solix BP 2600: $1,990          → ya reflejado en precio cash
- *   - Regalo: cada venta durante la campaña incluye una batería Anker C300 GRATIS
+ * Reglas (campaña Día del Padre):
+ *   - Anker Solix F2600 y batería de expansión: 20% off → ya reflejado en precio cash
+ *   - Regalo: PANEL SOLAR GRATIS con la compra de la Anker Solix F3800 Plus
  *
- *   Anuncia desde: 1 de mayo de 2026
- *   Vender solo del: 7 al 14 de mayo de 2026
+ *   Vigencia: 18 al 25 de junio de 2026 (anuncio y aplicación en la misma ventana)
  *   Solo en showroom (Roosevelt, Mayagüez, Ponce, Hatillo)
  */
 
-export const MADRES_GIFT_NAME_ES = 'Batería Anker C300';
-export const MADRES_GIFT_NAME_EN = 'Anker C300 Battery';
+export const MADRES_GIFT_NAME_ES = 'Panel solar';
+export const MADRES_GIFT_NAME_EN = 'Solar panel';
 
-const ANNOUNCE_START = new Date('2026-05-01T00:00:00');
-const SALE_START     = new Date('2026-05-07T00:00:00');
-const SALE_END       = new Date('2026-05-14T23:59:59');
+const ANNOUNCE_START = new Date('2026-06-18T00:00:00');
+const SALE_START     = new Date('2026-06-18T00:00:00');
+const SALE_END       = new Date('2026-06-25T23:59:59');
 
 /** ¿Hay que mostrar el banner promo en el modal? (1 al 14 de mayo) */
 export function isMadresAnnounceActive(now: Date = new Date()): boolean {

@@ -395,10 +395,10 @@ export function PDFModal({
               <span style={{ fontSize: 11, color: TEXT_MUTED, display: 'flex', alignItems: 'center', gap: 4 }}>
                 {promoMadres && madresApply && (
                   <span style={{
-                    background: '#E84F97', color: 'white',
+                    background: '#1D429B', color: 'white',
                     padding: '2px 8px', borderRadius: 10, fontWeight: 700,
                   }}>
-                    ♥ {idioma === 'en' ? "Mother's" : 'Madres'}
+                    👔 {idioma === 'en' ? "Father's" : 'Padre'}
                   </span>
                 )}
                 {farmacias.activa && (
@@ -416,34 +416,34 @@ export function PDFModal({
             {promosOpen && (
               <div style={{ padding: 12, display: 'flex', flexDirection: 'column', gap: 10 }}>
 
-                {/* ── Madres (solo cuando dentro de vigencia) ── */}
+                {/* ── Día del Padre (solo cuando dentro de vigencia) ── */}
                 {madresAnnounce && (
                   <div style={{
-                    border: `2px solid ${promoMadres && madresApply ? '#E84F97' : 'rgba(232,79,151,0.3)'}`,
+                    border: `2px solid ${promoMadres && madresApply ? '#1D429B' : 'rgba(29,66,155,0.3)'}`,
                     borderRadius: 10, overflow: 'hidden',
-                    background: 'rgba(232,79,151,0.08)',
+                    background: 'rgba(29,66,155,0.08)',
                   }}>
                     <button type="button" onClick={() => setMadresCardOpen(o => !o)}
                       style={{
                         width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
                         padding: '10px 12px', background: 'transparent', border: 'none', cursor: 'pointer',
-                        fontSize: 12.5, fontWeight: 800, color: '#F8B8D4',
+                        fontSize: 12.5, fontWeight: 800, color: '#AEC2EC',
                       }}>
-                      <span>♥ {idioma === 'en' ? "Mother's Day 2026 — Anker" : 'Mes de las Madres 2026 — Anker'} ♥</span>
+                      <span>👔 {idioma === 'en' ? "Father's Day 2026 — Anker" : 'Día del Padre 2026 — Anker'} 👔</span>
                       <span>{madresCardOpen ? '▴' : '▾'}</span>
                     </button>
                     {madresCardOpen && (
                       <div style={{ padding: '0 12px 12px' }}>
                         <p style={{ fontSize: 11, color: TEXT_MUTED, marginBottom: 10, lineHeight: 1.5 }}>
                           {idioma === 'en'
-                            ? <>Valid <b style={{ color: TEXT_PRIMARY }}>May 7–14, 2026</b>. Promotional prices on <b style={{ color: TEXT_PRIMARY }}>Anker Solix F2600</b> ($3,490 · 20% off) and <b style={{ color: TEXT_PRIMARY }}>Expansion Battery BP2600</b> ($1,990) already reflected in the catalog. Each sale during the campaign includes a <b style={{ color: '#F8B8D4' }}>FREE {MADRES_GIFT_NAME_EN}</b>. In-showroom only.</>
-                            : <>Vigente <b style={{ color: TEXT_PRIMARY }}>7 al 14 de mayo 2026</b>. Precios promo en <b style={{ color: TEXT_PRIMARY }}>Anker Solix F2600</b> ($3,490 · 20% off) y <b style={{ color: TEXT_PRIMARY }}>BP2600 Expansion</b> ($1,990) ya aplicados en el catálogo. Cada venta de la campaña incluye <b style={{ color: '#F8B8D4' }}>{MADRES_GIFT_NAME_ES} GRATIS</b>. Solo en showroom.</>}
+                            ? <>Valid <b style={{ color: TEXT_PRIMARY }}>June 18–25, 2026</b>. <b style={{ color: TEXT_PRIMARY }}>Anker Solix F2600</b> and its expansion battery at <b style={{ color: TEXT_PRIMARY }}>20% off</b> (already reflected in the catalog). <b style={{ color: '#AEC2EC' }}>FREE {MADRES_GIFT_NAME_EN}</b> with the purchase of the <b style={{ color: TEXT_PRIMARY }}>Anker Solix F3800 Plus</b>. In-showroom only.</>
+                            : <>Vigente <b style={{ color: TEXT_PRIMARY }}>18 al 25 de junio 2026</b>. <b style={{ color: TEXT_PRIMARY }}>Anker Solix F2600</b> y su batería de expansión al <b style={{ color: TEXT_PRIMARY }}>20% off</b> (ya aplicado en el catálogo). <b style={{ color: '#AEC2EC' }}>{MADRES_GIFT_NAME_ES} GRATIS</b> con la compra de la <b style={{ color: TEXT_PRIMARY }}>Anker Solix F3800 Plus</b>. Solo en showroom.</>}
                         </p>
                         {!madresApply ? (
                           <p style={{ fontSize: 11, color: TEXT_MUTED, fontStyle: 'italic', padding: '8px 0', margin: 0 }}>
                             {idioma === 'en'
-                              ? 'Activation window opens May 7, 2026.'
-                              : 'La ventana de aplicación abre el 7 de mayo de 2026.'}
+                              ? 'Activation window opens June 18, 2026.'
+                              : 'La ventana de aplicación abre el 18 de junio de 2026.'}
                           </p>
                         ) : (
                           <label style={{
@@ -451,20 +451,20 @@ export function PDFModal({
                             padding: '10px 12px', borderRadius: 8,
                             cursor: farmacias.activa ? 'not-allowed' : 'pointer',
                             opacity: farmacias.activa ? 0.5 : 1,
-                            background: promoMadres ? '#E84F97' : DARK_PANEL,
-                            border: `2px solid ${promoMadres ? '#E84F97' : 'rgba(232,79,151,0.4)'}`,
+                            background: promoMadres ? '#1D429B' : DARK_PANEL,
+                            border: `2px solid ${promoMadres ? '#1D429B' : 'rgba(29,66,155,0.4)'}`,
                           }}>
                             <input
                               type="checkbox"
                               checked={promoMadres}
                               disabled={farmacias.activa}
                               onChange={e => onPromoMadresChange(e.target.checked)}
-                              style={{ width: 18, height: 18, accentColor: '#E84F97' }}
+                              style={{ width: 18, height: 18, accentColor: '#1D429B' }}
                             />
-                            <span style={{ fontSize: 12, fontWeight: 700, color: promoMadres ? 'white' : '#F8B8D4' }}>
+                            <span style={{ fontSize: 12, fontWeight: 700, color: promoMadres ? 'white' : '#AEC2EC' }}>
                               {idioma === 'en'
-                                ? <>Apply Mother's Day promo (+ FREE {MADRES_GIFT_NAME_EN})</>
-                                : <>Aplicar promo Madres (+ {MADRES_GIFT_NAME_ES} GRATIS)</>}
+                                ? <>Apply Father's Day promo (+ FREE {MADRES_GIFT_NAME_EN} with F3800 Plus)</>
+                                : <>Aplicar promo Día del Padre (+ {MADRES_GIFT_NAME_ES} GRATIS con F3800 Plus)</>}
                             </span>
                           </label>
                         )}
@@ -546,8 +546,8 @@ export function PDFModal({
                       {promoMadres && madresApply && (
                         <p style={{ fontSize: 10.5, color: TEXT_MUTED, marginTop: 6, fontStyle: 'italic' }}>
                           {idioma === 'en'
-                            ? 'Disable Mother\'s Day promo to use this one.'
-                            : 'Desactiva Mes de las Madres para usar esta promo.'}
+                            ? 'Disable Father\'s Day promo to use this one.'
+                            : 'Desactiva Día del Padre para usar esta promo.'}
                         </p>
                       )}
                     </div>

@@ -536,29 +536,29 @@ export default function CotizacionPDF(props: CotizacionPDFProps) {
           </View>
         )}
 
-        {/* MADRES BANNER — solo si promo activa */}
+        {/* DÍA DEL PADRE BANNER — solo si promo activa */}
         {promoMadres && (
           <View style={{
             marginTop: 8, marginHorizontal: 12,
-            backgroundColor: '#2A0E1F',
-            borderWidth: 1.5, borderColor: '#E84F97',
+            backgroundColor: '#0B1838',
+            borderWidth: 1.5, borderColor: '#1D429B',
             borderRadius: 6, paddingVertical: 8, paddingHorizontal: 10,
           }}>
             <Text style={{
-              fontSize: 10, color: '#F8B8D4',
+              fontSize: 10, color: '#AEC2EC',
               fontFamily: 'Helvetica-Bold', textAlign: 'center', marginBottom: 3,
             }}>
               {tr(
-                '+ + Promo Mes de las Madres 2026 — Anker + +',
-                "+ + Mother's Day Promo 2026 — Anker + +",
+                '+ + Promo Día del Padre 2026 — Anker + +',
+                "+ + Father's Day Promo 2026 — Anker + +",
               )}
             </Text>
             <Text style={{
-              fontSize: 7.5, color: '#F8B8D4', textAlign: 'center', lineHeight: 1.4,
+              fontSize: 7.5, color: '#AEC2EC', textAlign: 'center', lineHeight: 1.4,
             }}>
               {tr(
-                'Precios promo aplicados · Incluye Batería Anker C300 GRATIS · Vigente del 7 al 14 de mayo 2026 · Solo en showroom (Roosevelt, Mayagüez, Ponce, Hatillo)',
-                "Promo prices applied · Includes FREE Anker C300 Battery · Valid May 7–14, 2026 · In-showroom only (Roosevelt, Mayagüez, Ponce, Hatillo)",
+                'F2600 y expansión al 20% off (ya aplicado) · Panel solar GRATIS con la compra de la Anker Solix F3800 Plus · Vigente del 18 al 25 de junio 2026 · Solo en showroom (Roosevelt, Mayagüez, Ponce, Hatillo)',
+                "F2600 and expansion at 20% off (already applied) · FREE solar panel with the purchase of the Anker Solix F3800 Plus · Valid June 18–25, 2026 · In-showroom only (Roosevelt, Mayagüez, Ponce, Hatillo)",
               )}
             </Text>
           </View>
