@@ -47,7 +47,7 @@ const MODES: { key: CartMode; emoji: string; label: string }[] = [
 
 function getItemPrice(product: Product, mode: CartMode, syncTerm: SyncTerm): number {
   if (mode === 'cash') return product.cash;
-  if (mode === 'homedepot') return product.syncPrice;
+  if (mode === 'homedepot') return product.cash;
   if (mode === 'kiwi') return product.syncPrice;
   // sync — mensualidad según plazo
   if (syncTerm === '12') return product.pay12;
