@@ -1,4 +1,4 @@
-# ⚡ Cotizador Anker Pro
+# ⚡ COTIZADOR ANKER PRO
 
 Cotizador web de productos **Anker** (baterías / respaldo de energía) para el equipo comercial de **Windmar Home PR**. Permite armar una cotización con carrito, aplicar pronto pago y generar un PDF profesional listo para enviar al cliente.
 
