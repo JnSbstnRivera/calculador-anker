@@ -462,6 +462,8 @@ export default function CotizacionPDF(props: CotizacionPDFProps) {
                   {chunk.map(col => {
                     const grandTotal = getColGrandTotal(col);
                     const financed = col.isSyncMode ? Math.max(0, syncTotalBase - downPayment) : 0;
+                    // En modos no-sync (Cash, Home Depot, Kiwi), el pronto pago se resta del total
+                    const totalConPronto = col.isSyncMode ? grandTotal : Math.max(0, grandTotal - downPayment);
                     return (
                       <View key={col.key} style={styles.totalBox}>
                         <View style={[styles.totalBoxHeader, { backgroundColor: col.color }]}>
@@ -489,6 +491,19 @@ export default function CotizacionPDF(props: CotizacionPDFProps) {
                             )}
                           </>
                         )}
+                        {/* Desglose con pronto pago en modos NO-sync (Cash / Home Depot / Kiwi) */}
+                        {!col.isSyncMode && downPayment > 0 && (
+                          <>
+                            <View style={styles.totalBoxRow}>
+                              <Text style={styles.totalBoxLabel}>{tr('Subtotal', 'Subtotal')}</Text>
+                              <Text style={styles.totalBoxValue}>{fmt(grandTotal)}</Text>
+                            </View>
+                            <View style={[styles.totalBoxRow, { backgroundColor: ROW_EVEN }]}>
+                              <Text style={styles.totalBoxLabel}>{tr('Pronto Pago', 'Down Payment')}</Text>
+                              <Text style={styles.totalBoxValue}>{fmt(downPayment)}</Text>
+                            </View>
+                          </>
+                        )}
                         <View style={[styles.totalBoxHighlight, { backgroundColor: col.color }]}>
                           <Text style={styles.totalBoxHighlightLabel}>
                             {col.isSyncMode
@@ -496,7 +511,7 @@ export default function CotizacionPDF(props: CotizacionPDFProps) {
                               : tr('TOTAL', 'TOTAL')}
                           </Text>
                           <Text style={styles.totalBoxHighlightValue}>
-                            {fmt(grandTotal)}{col.isSyncMode ? '/m' : ''}
+                            {fmt(totalConPronto)}{col.isSyncMode ? '/m' : ''}
                           </Text>
                         </View>
                       </View>
